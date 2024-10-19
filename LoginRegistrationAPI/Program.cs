@@ -17,6 +17,16 @@ builder.Services.AddSwaggerGen();
 //builder.Services.AddDbContext<TestDBContext>(options =>
 // options.UseSqlServer(builder.Configuration.GetConnectionString("dbcs"))
 //);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
 builder.Services.AddDbContext<AUTHDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("dbcsAuth"))
 );
